@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingInComponent implements OnInit {
 
+  model: any = {};
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  logIn() {
+    console.log(this.model);
   }
 
 }
