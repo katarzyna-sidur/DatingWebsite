@@ -7,13 +7,15 @@ import { NavComponent } from './components/nav/nav.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AuthService } from './services/auth.service';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     SingInComponent,
-    MainPageComponent
+    MainPageComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
