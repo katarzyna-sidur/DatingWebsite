@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/angular,aspnetcore
-# Edit at https://www.gitignore.io/?templates=angular,aspnetcore
+# Created by https://www.gitignore.io/api/angular,dotnetcore,aspnetcore
+# Edit at https://www.gitignore.io/?templates=angular,dotnetcore,aspnetcore
 
 ### Angular ###
 ## Angular ##
@@ -303,4 +303,13 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
-# End of https://www.gitignore.io/api/angular,aspnetcore
+### DotnetCore ###
+# .NET Core build folders
+/bin
+/obj
+
+# Common node modules locations
+/wwwroot/node_modules
+
+
+# End of https://www.gitignore.io/api/angular,dotnetcore,aspnetcore
