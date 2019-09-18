@@ -8,6 +8,7 @@ import { SingInComponent } from './components/sing-in/sing-in.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AuthService } from './services/auth.service';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     NavComponent,
     SingInComponent,
     MainPageComponent,
-    UserFormComponent
+    UserFormComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
