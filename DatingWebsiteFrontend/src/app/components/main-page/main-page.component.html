@@ -1,1 +1,18 @@
-<p>main-page works!</p>
+<div class="container">
+    <form (submit)="onSubmit()" [formGroup]="registerForm" class="needs-validation" novalidate="">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="firstName">Nazwa użytkownika</label>
+                <input type="text" class="form-control" id="firstName" formControlName="login" placeholder="" value=""
+                    required="">
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="lastName">Hasło</label>
+                <input type="password" class="form-control" id="lastName" formControlName="password" placeholder=""
+                    value="" required="">
+            </div>
+        </div>
+        <button type="submit">Załóż konto</button>
+    </form>
+</div>
