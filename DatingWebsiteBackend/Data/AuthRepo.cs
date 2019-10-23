@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using DatingWebsiteBackend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingWebsiteBackend.Data
 {
@@ -16,9 +17,17 @@ namespace DatingWebsiteBackend.Data
 
         }
 
-        public Task<User> Login(string username, string password)
+        public async Task<User> Login(string username, string password)
         {
-            throw new System.NotImplementedException();
+            var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == username);
+
+            if(user == null)
+            return null;
+
+            if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            return null;
+
+            return user;
         }
 
         public async Task<User> Register(User user, string password)
@@ -35,10 +44,14 @@ namespace DatingWebsiteBackend.Data
             return user;
         }
 
-        public Task<bool> UserExsist(string username)
+        public async Task<bool> UserExsist(string username)
         {
-            throw new System.NotImplementedException();
+            if(await context.Users.AnyAsync(x => x.UserName == username))
+                return true;
+
+            return false;
         }
+
         #endregion
 
         #region method private 
@@ -50,6 +63,22 @@ namespace DatingWebsiteBackend.Data
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
+        
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+           using(var hmac =  new System.Security.Cryptography.HMACSHA512(passwordSalt)) 
+            {
+                var  computedHash =  hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != passwordHash[i])
+                    return false;
+                }
+                return true;
+            }
+        }
+
         #endregion
     }
 }
