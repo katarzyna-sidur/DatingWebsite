@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingWebsiteBackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191023083159_AddedUser")]
-    partial class AddedUser
+    [Migration("20191024064719_AddedUsers")]
+    partial class AddedUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,12 @@ namespace DatingWebsiteBackend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name");
 
                     b.Property<byte[]>("PasswordHash");
 
