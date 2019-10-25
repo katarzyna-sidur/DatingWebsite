@@ -43,6 +43,7 @@ namespace DatingWebsiteBackend.Controllers
 
             return StatusCode(201);
         }
+        
 
         [HttpPost("login")]
         public async Task<ActionResult> Login(UserForLoginDto userForLoginDto)
@@ -59,7 +60,7 @@ namespace DatingWebsiteBackend.Controllers
                 new Claim(ClaimTypes.Name, userFromRepo.UserName)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSetting:Token").Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));
 
             var creds =  new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDecriptor = new SecurityTokenDescriptor
