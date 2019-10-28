@@ -9,7 +9,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { AuthService } from './services/auth.service';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { RegisterComponent } from './components/register/register.component';
-import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 @NgModule({
   declarations: [
@@ -24,9 +27,10 @@ import { UserService } from './services/user.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [AuthService, UserService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
